@@ -428,6 +428,30 @@ button {
   background: red;
   color: white;
 }
+#staffForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#staffForm input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background: #1b1e2b;
+  color: white;
+}
+
+#staffForm button {
+  background: #5C3AFF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
 
 
