@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Page</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="nav">
+    <h2>POS Bangpit</h2>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div class="menu" id="menuList"></div>
+
+  <div class="cart">
+    <h3>Cart</h3>
+    <div id="cartItems"></div>
+    <p>Total: RM <span id="total">0.00</span></p>
+    <button onclick="checkout()">Checkout</button>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/pos.js"></script>
+</body>
+</html>
