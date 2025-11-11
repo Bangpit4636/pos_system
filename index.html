@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>POS Bangpit</title>
-  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="background:#1b1e2b;color:white;text-align:center;padding-top:40vh;font-family:Poppins,sans-serif;">
+  <h2>Redirecting...</h2>
   <script>
-    if(localStorage.getItem("loggedInUser")) {
-      window.location.href = "dashboard.html";
+    const user = localStorage.getItem("loggedInUser");
+    if (user) {
+      window.location.replace("dashboard.html");
     } else {
-      window.location.href = "login.html";
+      window.location.replace("login.html");
     }
   </script>
 </body>
