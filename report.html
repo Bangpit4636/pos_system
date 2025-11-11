@@ -13,6 +13,7 @@
     <button onclick="logout()">Logout</button>
   </div>
 
+  <!-- ✅ Sidebar -->
   <aside id="sidebar" class="sidebar">
     <a href="dashboard.html">🏠 Dashboard</a>
     <a href="pos.html">💰 POS</a>
@@ -20,23 +21,63 @@
     <a href="expenses.html">📦 Expenses</a>
   </aside>
 
+  <!-- ✅ Content -->
   <div class="content">
     <div class="card">
-      <h3>Sales Report</h3>
-      <ul id="reportList"></ul>
+      <h3>Sales Report Summary</h3>
+
+      <!-- 🔎 Filter Controls -->
+      <div class="filter-section">
+        <label>Filter mengikut:</label>
+        <select id="filterPeriod" onchange="renderReport()">
+          <option value="today">Hari Ini</option>
+          <option value="week">Minggu Ini</option>
+          <option value="month">Bulan Ini</option>
+          <option value="year">Tahun Ini</option>
+          <option value="all">Semua</option>
+        </select>
+
+        <label>Kaedah Bayaran:</label>
+        <select id="filterPayment" onchange="renderReport()">
+          <option value="all">Semua</option>
+          <option value="cash">Cash</option>
+          <option value="qrpay">QRPay / DuitNow</option>
+          <option value="tng">TNG eWallet</option>
+        </select>
+      </div>
+
+      <hr />
+
+      <div id="reportSummary">
+        <p><b>Total Jualan:</b> RM <span id="totalSales">0.00</span></p>
+        <p><b>Jumlah Transaksi:</b> <span id="totalOrders">0</span></p>
+      </div>
+    </div>
+
+    <!-- 📦 Sales by Item -->
+    <div class="card">
+      <h3>Sales by Item</h3>
+      <table class="report-table" id="salesByItem">
+        <thead><tr><th>Item</th><th>Jumlah Jual</th><th>Total (RM)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- 💳 Sales by Payment -->
+    <div class="card">
+      <h3>Sales by Payment Type</h3>
+      <table class="report-table" id="salesByPayment">
+        <thead><tr><th>Kaedah</th><th>Jumlah Transaksi</th><th>Total (RM)</th></tr></thead>
+        <tbody></tbody>
+      </table>
     </div>
   </div>
 
   <script src="js/auth.js"></script>
+  <script src="js/report.js"></script>
   <script>
-    function toggleMenu(){ document.getElementById('sidebar').classList.toggle('open'); }
-
-    const sales = JSON.parse(localStorage.getItem("sales")) || [];
-    const list = document.getElementById("reportList");
-    if(sales.length === 0){
-      list.innerHTML = "<li>No sales yet</li>";
-    } else {
-      list.innerHTML = sales.map(s=>`<li>${new Date(s.date).toLocaleString()} — RM ${s.amount.toFixed(2)}</li>`).join("");
+    function toggleMenu() {
+      document.getElementById('sidebar').classList.toggle('open');
     }
   </script>
 </body>
