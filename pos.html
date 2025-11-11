@@ -29,6 +29,17 @@
     <h3>Cart</h3>
     <div id="cartItems"></div>
     <p>Total: RM <span id="total">0.00</span></p>
+
+    <!-- 💳 PILIHAN PEMBAYARAN -->
+    <div class="payment-section">
+      <h4>Pilih Kaedah Bayaran:</h4>
+      <select id="paymentMethod">
+        <option value="cash">💵 Cash (Tunai)</option>
+        <option value="qrpay">📱 QRPay / DuitNow</option>
+        <option value="tng">💳 Touch ’n Go</option>
+      </select>
+    </div>
+
     <button onclick="checkout()">Checkout</button>
   </div>
 
