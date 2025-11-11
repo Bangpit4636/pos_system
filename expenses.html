@@ -30,7 +30,8 @@
 
     <form id="expenseForm" onsubmit="addExpense(event)">
       <input type="text" id="desc" placeholder="Contoh: Minyak masak" required>
-      <input type="number" id="amount" placeholder="Jumlah (RM)" required>
+      <input type="number" id="amount" placeholder="Jumlah (RM)" step="0.01" min="0" required>
+
       <button type="submit">Tambah</button>
     </form>
 
