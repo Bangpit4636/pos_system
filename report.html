@@ -1,108 +1,43 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Laporan Jualan</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report - POS Bangpit</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="layout">
-  <!-- SIDEBAR -->
-  <div id="sidebar" class="sidebar">
-    <h2>🍗 Bangpit POS</h2>
+<body>
+  <div class="nav">
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <h2>Report</h2>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
     <a href="dashboard.html">🏠 Dashboard</a>
     <a href="pos.html">💰 POS</a>
-    <a href="inventory.html">📦 Inventory</a>
-    <a href="expenses.html">💸 Expenses</a>
-    <a href="report.html" class="active">📈 Reports</a>
-    <button class="logout-btn" onclick="logout()">Logout</button>
-  </div>
+    <a href="report.html" class="active">📊 Report</a>
+    <a href="expenses.html">📦 Expenses</a>
+  </aside>
 
-  <!-- OVERLAY -->
-  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
-
-  <!-- MAIN -->
-  <div class="main">
-    <div class="topbar">
-      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-      <h1>Laporan Jualan & Perbelanjaan</h1>
-    </div>
-
-    <!-- CARD SUMMARY -->
-    <div class="export-row">
-  <button class="export-btn" onclick="exportPDF()">⬇️ Export PDF</button>
-</div>
-
-    <div class="summary-grid">
-      <div class="summary-card">
-        <h3>💰 Total Jualan</h3>
-        <p id="sumSales">RM 0.00</p>
-      </div>
-      <div class="summary-card">
-        <h3>💸 Total Belanja</h3>
-        <p id="sumExpense">RM 0.00</p>
-      </div>
-      <div class="summary-card">
-        <h3>📦 GrabFood Pending</h3>
-        <p id="pendingGrab">RM 0.00</p>
-      </div>
-      <div class="summary-card profit-card">
-        <h3>📈 Untung Bersih</h3>
-        <p id="netProfit">RM 0.00</p>
-      </div>
-    </div>
-
-    <!-- DETAIL SECTION -->
-    <div class="report-section">
-      <h2>📊 Laporan Harian</h2>
-      <div class="table-wrapper">
-        <h4>Jualan Harian</h4>
-        <table class="data-table">
-          <thead>
-            <tr><th>Tarikh</th><th>Jumlah Jualan (RM)</th></tr>
-          </thead>
-          <tbody id="reportSales"></tbody>
-        </table>
-        <section class="report-section">
-  <h2>🔥 Sales by Item</h2>
-
-  <div class="filter-row">
-    <label>Tempoh:</label>
-    <select id="salesFilter" onchange="renderItemSales()">
-      <option value="day">Hari Ini</option>
-      <option value="week">Minggu Ini</option>
-      <option value="month">Bulan Ini</option>
-      <option value="all">Semua</option>
-    </select>
-  </div>
-
-  <table class="data-table">
-    <thead>
-      <tr><th>Menu</th><th>Kuantiti</th><th>Jumlah Jualan (RM)</th></tr>
-    </thead>
-    <tbody id="itemSalesList"></tbody>
-  </table>
-</section>
-
-
-        <h4>Perbelanjaan Harian</h4>
-        <table class="data-table">
-          <thead>
-            <tr><th>Perkara</th><th>Jumlah (RM)</th></tr>
-          </thead>
-          <tbody id="reportExpense"></tbody>
-        </table>
-      </div>
+  <div class="content">
+    <div class="card">
+      <h3>Sales Report</h3>
+      <ul id="reportList"></ul>
     </div>
   </div>
 
   <script src="js/auth.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/report.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="js/auth.js"></script>
-<script>checkAccess();</script>
+  <script>
+    function toggleMenu(){ document.getElementById('sidebar').classList.toggle('open'); }
 
+    const sales = JSON.parse(localStorage.getItem("sales")) || [];
+    const list = document.getElementById("reportList");
+    if(sales.length === 0){
+      list.innerHTML = "<li>No sales yet</li>";
+    } else {
+      list.innerHTML = sales.map(s=>`<li>${new Date(s.date).toLocaleString()} — RM ${s.amount.toFixed(2)}</li>`).join("");
+    }
+  </script>
 </body>
 </html>
