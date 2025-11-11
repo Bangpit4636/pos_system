@@ -381,6 +381,53 @@ button {
   opacity: 0.9;
   transform: translateY(-2px);
 }
+.admin-section {
+  background: #2a2d3c;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.admin-section form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-section input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background: #1b1e2b;
+  color: white;
+  flex: 1;
+}
+
+.admin-section button {
+  background: #5C3AFF;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit-btn, .delete-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.edit-btn {
+  background: #4b82ff;
+  color: white;
+}
+.delete-btn {
+  background: red;
+  color: white;
+}
 
 
 
