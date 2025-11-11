@@ -127,3 +127,23 @@ button:hover {
 .sidebar a:hover, .sidebar a.active {
   background: #5C3AFF;
 }
+.payment-section {
+  margin-top: 10px;
+  background: #1b1e2b;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.payment-section h4 {
+  margin-bottom: 6px;
+}
+
+.payment-section select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  font-size: 15px;
+  background: #2a2d3c;
+  color: white;
+}
