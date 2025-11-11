@@ -76,19 +76,22 @@ function checkout() {
   const total = cart.reduce((sum, c) => sum + c.price, 0);
   const paymentType = document.getElementById("paymentType").value;
 
-  // Simpan transaksi
+  const saleItems = cart.map(c => ({ name: c.name, price: c.price }));
+
+  // Simpan transaksi ke localStorage
   const sales = JSON.parse(localStorage.getItem("sales")) || [];
   const newSale = {
     id: Date.now(),
     amount: total,
     paymentType,
     proof: proofImageBase64,
+    items: saleItems,
     date: new Date().toISOString()
   };
   sales.push(newSale);
   localStorage.setItem("sales", JSON.stringify(sales));
 
-  // Reset
+  // Reset cart
   cart = [];
   proofImageBase64 = "";
   renderCart();
@@ -98,6 +101,7 @@ function checkout() {
 
   alert(`Checkout berjaya!\nJumlah: RM ${total.toFixed(2)}\nKaedah: ${paymentType.toUpperCase()}`);
 }
+
 // ===============================
 // GRABFOOD SALES FUNCTIONS
 // ===============================
