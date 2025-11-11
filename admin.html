@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Bangpit POS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="layout">
+  <!-- SIDEBAR -->
+  <div id="sidebar" class="sidebar">
+    <h2>🍗 Bangpit POS</h2>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="pos.html">💰 POS</a>
+    <a href="inventory.html" class="active">🧾 Admin Panel</a>
+    <a href="expenses.html">💸 Expenses</a>
+    <a href="report.html">📈 Reports</a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- OVERLAY -->
+  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <h1>Admin Panel</h1>
+    </div>
+
+    <div class="admin-section">
+      <h2>🧾 Pengurusan Menu</h2>
+      <form id="menuForm" onsubmit="addMenuItem(event)">
+        <input type="hidden" id="editIndex">
+        <input type="text" id="menuName" placeholder="Nama Menu" required>
+        <input type="number" id="menuPrice" step="0.01" placeholder="Harga (RM)" required>
+        <button type="submit">Simpan</button>
+      </form>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Nama</th><th>Harga (RM)</th><th>Tindakan</th></tr>
+        </thead>
+        <tbody id="menuList"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
