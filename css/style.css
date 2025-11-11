@@ -147,3 +147,38 @@ button:hover {
   background: #2a2d3c;
   color: white;
 }
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.filter-section label {
+  margin-right: 4px;
+}
+
+.filter-section select {
+  background: #2a2d3c;
+  color: white;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+}
+
+.report-table th, .report-table td {
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.report-table th {
+  background: #5C3AFF;
+  color: white;
+}
