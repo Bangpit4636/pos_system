@@ -1,80 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>POS Bangpit</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Page - Bangpit</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="layout">
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar">
-    <h2>🍗 Bangpit POS</h2>
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="pos.html" class="active">💰 POS</a>
-    <a href="inventory.html">📦 Inventory</a>
-    <a href="expenses.html">💸 Expenses</a>
-    <a href="report.html">📈 Reports</a>
-    <button class="logout-btn" onclick="logout()">Logout</button>
+<body>
+  <div class="nav">
+    <h2>POS Bangpit</h2>
+    <button onclick="logout()">Logout</button>
   </div>
 
-  <!-- Overlay (for mobile) -->
-  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+  <div class="menu" id="menuList"></div>
 
-  <!-- Main Content -->
-  <div class="main">
-    <div class="topbar">
-      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-      <h1>POS Jualan</h1>
-    </div>
-
-    <div class="pos-container">
-      <!-- Menu list -->
-      <div class="menu" id="menuList"></div>
-
-      <!-- Cart section -->
-      <div class="cart">
-  <h3>🛒 Cart</h3>
-  <div id="cartItems"></div>
-  <p>Total: RM <span id="total">0.00</span></p>
-
-  <h4>Pilih Kaedah Bayaran:</h4>
-  <select id="paymentType" onchange="toggleProofUpload()">
-    <option value="cash">💵 Cash</option>
-    <option value="qr">📱 QR Pay</option>
-    <option value="tng">💳 Touch 'n Go</option>
-    <option value="online">🌐 Online Transfer</option>
-  </select>
-
-  <div id="proofSection" class="proof-upload hidden">
-    <p>Muat naik bukti bayaran:</p>
-    <input type="file" id="paymentProof" accept="image/*" onchange="previewProof(event)">
-    <img id="proofPreview" class="proof-preview" />
+  <div class="cart">
+    <h3>Cart</h3>
+    <div id="cartItems"></div>
+    <p>Total: RM <span id="total">0.00</span></p>
+    <button onclick="checkout()">Checkout</button>
   </div>
-
-  <button onclick="checkout()">Checkout</button>
-        <button class="grab-btn" onclick="openGrabModal()">📦 Tambah GrabFood Order</button>
-
-<!-- Modal GrabFood -->
-<div id="grabModal" class="modal hidden">
-  <div class="modal-box">
-    <h3>Tambah Jualan GrabFood</h3>
-    <input type="number" id="grabAmount" placeholder="Jumlah (RM)" step="0.01" required>
-    <div class="modal-actions">
-      <button onclick="saveGrabSale()">Simpan</button>
-      <button onclick="closeGrabModal()">Batal</button>
-    </div>
-  </div>
-</div>
-
-</div>
-
 
   <script src="js/auth.js"></script>
-  <script src="js/ui.js"></script>
   <script src="js/pos.js"></script>
-      <script src="js/auth.js"></script>
-<script>checkAccess();</script>
-
 </body>
 </html>
