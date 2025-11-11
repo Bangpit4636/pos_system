@@ -3,52 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>POS Page - Bangpit</title>
+  <title>POS Bangpit</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- ✅ NAVBAR -->
-  <div class="nav">
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <h2>POS Bangpit</h2>
-    <button onclick="logout()">Logout</button>
-  </div>
-
-  <!-- ✅ SIDEBAR -->
-  <aside id="sidebar" class="sidebar">
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="pos.html" class="active">💰 POS</a>
-    <a href="report.html">📊 Report</a>
-    <a href="expenses.html">📦 Expenses</a>
+  <aside class="sidebar open">
+    <h2 class="logo">🍗 Bangpit</h2>
+    <nav>
+      <a href="dashboard.html">🏠 Dashboard</a>
+      <a href="pos.html" class="active">💰 POS</a>
+      <a href="report.html">📊 Report</a>
+      <a href="expenses.html">📦 Expenses</a>
+    </nav>
+    <button class="logout" onclick="logout()">Logout</button>
   </aside>
 
-  <!-- ✅ POS SECTION -->
-  <div class="menu" id="menuList"></div>
+  <main class="pos-area">
+    <header class="pos-header">
+      <h1>POS Bangpit</h1>
+    </header>
 
-  <div class="cart">
-    <h3>Cart</h3>
-    <div id="cartItems"></div>
-    <p>Total: RM <span id="total">0.00</span></p>
+    <section class="menu-grid" id="menuList"></section>
 
-    <!-- 💳 PILIHAN PEMBAYARAN -->
-    <div class="payment-section">
-      <h4>Pilih Kaedah Bayaran:</h4>
-      <select id="paymentMethod">
-        <option value="cash">💵 Cash (Tunai)</option>
-        <option value="qrpay">📱 QRPay / DuitNow</option>
-        <option value="tng">💳 Touch ’n Go</option>
-      </select>
-    </div>
+    <section class="cart-panel">
+      <h3>🛒 Cart</h3>
+      <div id="cartItems"></div>
+      <div class="cart-total">
+        <span>Total:</span>
+        <strong>RM <span id="total">0.00</span></strong>
+      </div>
 
-    <button onclick="checkout()">Checkout</button>
-  </div>
+      <div class="payment-select">
+        <label>Kaedah Bayaran:</label>
+        <select id="paymentMethod">
+          <option value="cash">💵 Tunai</option>
+          <option value="qrpay">📱 QRPay</option>
+          <option value="tng">💳 TNG</option>
+        </select>
+      </div>
+
+      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </section>
+  </main>
 
   <script src="js/auth.js"></script>
   <script src="js/pos.js"></script>
-  <script>
-    function toggleMenu() {
-      document.getElementById('sidebar').classList.toggle('open');
-    }
-  </script>
 </body>
 </html>
