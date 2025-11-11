@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard POS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="nav">
+    <h2>Dashboard Bangpit</h2>
+    <button onclick="logout()">Logout</button>
+  </div>
+  <div class="content">
+    <div class="card">
+      <h3>Total Sales</h3>
+      <p id="totalSales">RM 0.00</p>
+    </div>
+    <div class="card">
+      <button onclick="window.location='pos.html'">Go to POS</button>
+    </div>
+  </div>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
