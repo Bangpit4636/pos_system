@@ -3,48 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expenses</title>
+  <title>Expenses - POS Bangpit</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="layout">
-  <!-- SIDEBAR -->
-  <div id="sidebar" class="sidebar">
-    <h2>🍗 Bangpit POS</h2>
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="pos.html">💰 POS</a>
-    <a href="inventory.html">📦 Inventory</a>
-    <a href="expenses.html" class="active">💸 Expenses</a>
-    <a href="report.html">📈 Reports</a>
-    <button class="logout-btn" onclick="logout()">Logout</button>
+<body>
+  <div class="nav">
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <h2>Expenses</h2>
+    <button onclick="logout()">Logout</button>
   </div>
 
-  <!-- OVERLAY -->
-  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+  <aside id="sidebar" class="sidebar">
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="pos.html">💰 POS</a>
+    <a href="report.html">📊 Report</a>
+    <a href="expenses.html" class="active">📦 Expenses</a>
+  </aside>
 
-  <!-- MAIN CONTENT -->
-  <div class="main">
-    <div class="topbar">
-      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-      <h1>Rekod Perbelanjaan</h1>
+  <div class="content">
+    <div class="card">
+      <h3>Tambah Perbelanjaan</h3>
+      <input type="text" id="desc" placeholder="Contoh: Minyak masak" />
+      <input type="number" id="amount" placeholder="Jumlah (RM)" />
+      <button onclick="addExpense()">Simpan</button>
     </div>
 
-    <form id="expenseForm" onsubmit="addExpense(event)">
-      <input type="text" id="desc" placeholder="Contoh: Minyak masak" required>
-      <input type="number" id="amount" placeholder="Jumlah (RM)" step="0.01" min="0" required>
-
-      <button type="submit">Tambah</button>
-    </form>
-
-    <table class="data-table">
-      <thead>
-        <tr><th>Perkara</th><th>Jumlah (RM)</th><th>Tarikh</th><th></th></tr>
-      </thead>
-      <tbody id="expenseList"></tbody>
-    </table>
+    <div class="card">
+      <h3>Senarai Perbelanjaan</h3>
+      <ul id="expenseList"></ul>
+    </div>
   </div>
 
   <script src="js/auth.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/expenses.js"></script>
+  <script>
+    function toggleMenu(){ document.getElementById('sidebar').classList.toggle('open'); }
+
+    const list = document.getElementById("expenseList");
+    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+    function renderExpenses(){
+      if(expenses.length === 0){
+        list.innerHTML = "<li>Tiada perbelanjaan</li>";
+      } else {
+        list.innerHTML = expenses.map(e=>`<li>${e.desc} — RM ${e.amount}</li>`).join("");
+      }
+    }
+
+    function addExpense(){
+      const desc = document.getElementById("desc").value;
+      const amount = parseFloat(document.getElementById("amount").value);
+      if(!desc || !amount) return alert("Sila isi semua maklumat!");
+      expenses.push({desc, amount});
+      localStorage.setItem("expenses", JSON.stringify(expenses));
+      document.getElementById("desc").value="";
+      document.getElementById("amount").value="";
+      renderExpenses();
+    }
+
+    renderExpenses();
+  </script>
 </body>
 </html>
