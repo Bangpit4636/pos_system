@@ -26,7 +26,6 @@
     <div class="card">
       <h3>Sales Report Summary</h3>
 
-      <!-- 🔎 Filter Controls -->
       <div class="filter-section">
         <label>Filter mengikut:</label>
         <select id="filterPeriod" onchange="renderReport()">
@@ -49,7 +48,9 @@
       <hr />
 
       <div id="reportSummary">
-        <p><b>Total Jualan:</b> RM <span id="totalSales">0.00</span></p>
+        <p><b>Total Sales:</b> RM <span id="totalSales">0.00</span></p>
+        <p><b>Total Expenses:</b> RM <span id="totalExpenses">0.00</span></p>
+        <p><b>Net Profit:</b> RM <span id="netProfit">0.00</span></p>
         <p><b>Jumlah Transaksi:</b> <span id="totalOrders">0</span></p>
       </div>
     </div>
@@ -68,6 +69,15 @@
       <h3>Sales by Payment Type</h3>
       <table class="report-table" id="salesByPayment">
         <thead><tr><th>Kaedah</th><th>Jumlah Transaksi</th><th>Total (RM)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- 📉 Expenses -->
+    <div class="card">
+      <h3>Expenses Details</h3>
+      <table class="report-table" id="expenseTable">
+        <thead><tr><th>Perbelanjaan</th><th>Jumlah (RM)</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>
