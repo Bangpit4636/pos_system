@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Laporan Jualan</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="layout">
   <!-- SIDEBAR -->
@@ -21,41 +21,54 @@
   <!-- OVERLAY -->
   <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <div class="main">
     <div class="topbar">
       <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-      <h1>Laporan Jualan & Belanja</h1>
+      <h1>Laporan Jualan & Perbelanjaan</h1>
     </div>
 
-    <section>
-      <h2>📊 Laporan Jualan</h2>
-      <table class="data-table">
-        <thead>
-          <tr><th>Tarikh</th><th>Jumlah Jualan (RM)</th></tr>
-        </thead>
-        <tbody id="reportSales"></tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>💸 Laporan Perbelanjaan</h2>
-      <table class="data-table">
-        <thead>
-          <tr><th>Perkara</th><th>Jumlah (RM)</th></tr>
-        </thead>
-        <tbody id="reportExpense"></tbody>
-      </table>
-    </section>
-
-    <section class="summary">
-      <h2>📈 Ringkasan</h2>
-      <div class="summary-box">
-        <p><strong>Total Jualan:</strong> RM <span id="sumSales">0.00</span></p>
-        <p><strong>Total Belanja:</strong> RM <span id="sumExpense">0.00</span></p>
-        <p class="profit"><strong>Untung Bersih:</strong> RM <span id="netProfit">0.00</span></p>
+    <!-- CARD SUMMARY -->
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h3>💰 Total Jualan</h3>
+        <p id="sumSales">RM 0.00</p>
       </div>
-    </section>
+      <div class="summary-card">
+        <h3>💸 Total Belanja</h3>
+        <p id="sumExpense">RM 0.00</p>
+      </div>
+      <div class="summary-card">
+        <h3>📦 GrabFood Pending</h3>
+        <p id="pendingGrab">RM 0.00</p>
+      </div>
+      <div class="summary-card profit-card">
+        <h3>📈 Untung Bersih</h3>
+        <p id="netProfit">RM 0.00</p>
+      </div>
+    </div>
+
+    <!-- DETAIL SECTION -->
+    <div class="report-section">
+      <h2>📊 Laporan Harian</h2>
+      <div class="table-wrapper">
+        <h4>Jualan Harian</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Tarikh</th><th>Jumlah Jualan (RM)</th></tr>
+          </thead>
+          <tbody id="reportSales"></tbody>
+        </table>
+
+        <h4>Perbelanjaan Harian</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>Perkara</th><th>Jumlah (RM)</th></tr>
+          </thead>
+          <tbody id="reportExpense"></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <script src="js/auth.js"></script>
@@ -63,13 +76,3 @@
   <script src="js/report.js"></script>
 </body>
 </html>
-<section class="summary">
-  <h2>📈 Ringkasan</h2>
-  <div class="summary-box">
-    <p><strong>Total Jualan Tunai:</strong> RM <span id="sumSales">0.00</span></p>
-    <p><strong>Total Belanja:</strong> RM <span id="sumExpense">0.00</span></p>
-    <p><strong>GrabFood Pending:</strong> RM <span id="pendingGrab">0.00</span></p>
-    <p><strong>Untung Bersih (Sebenar):</strong> RM <span id="netProfit">0.00</span></p>
-  </div>
-</section>
-
