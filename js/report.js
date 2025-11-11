@@ -88,4 +88,31 @@ function renderItemSales() {
 
 // Auto render bila buka report
 renderItemSales();
+async function exportPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('p', 'mm', 'a4');
+  const reportArea = document.querySelector('.main');
+
+  // Tukar warna latar ke putih semasa capture (supaya PDF tak gelap)
+  document.body.style.background = '#fff';
+
+  // Screenshot elemen report
+  const canvas = await html2canvas(reportArea, { scale: 2 });
+  const imgData = canvas.toDataURL('image/png');
+
+  // Kira scale ikut saiz A4
+  const imgWidth = 210; // A4 width in mm
+  const pageHeight = 297;
+  const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+  // Nama fail ikut tarikh semasa
+  const date = new Date().toISOString().split('T')[0];
+  doc.save(`report-${date}.pdf`);
+
+  // Pulangkan warna asal
+  document.body.style.background = '#1b1e2b';
+}
+
 
