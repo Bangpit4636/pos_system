@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Report</title>
+  <title>Laporan Jualan</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="layout">
-  <div class="sidebar">
+  <!-- SIDEBAR -->
+  <div id="sidebar" class="sidebar">
     <h2>🍗 Bangpit POS</h2>
     <a href="dashboard.html">🏠 Dashboard</a>
     <a href="pos.html">💰 POS</a>
@@ -17,8 +18,15 @@
     <button class="logout-btn" onclick="logout()">Logout</button>
   </div>
 
+  <!-- OVERLAY -->
+  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+  <!-- MAIN CONTENT -->
   <div class="main">
-    <h1>Laporan Jualan & Perbelanjaan</h1>
+    <div class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <h1>Laporan Jualan & Belanja</h1>
+    </div>
 
     <section>
       <h2>📊 Laporan Jualan</h2>
@@ -51,6 +59,7 @@
   </div>
 
   <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
   <script src="js/report.js"></script>
 </body>
 </html>
