@@ -69,3 +69,51 @@ button {
   border-radius: 12px;
   text-align: center;
 }
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+.sidebar {
+  width: 220px;
+  background: #2a2d3c;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sidebar h2 {
+  color: #5C3AFF;
+  margin-bottom: 20px;
+}
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+.sidebar a:hover, .sidebar a.active {
+  background: #5C3AFF;
+}
+.logout-btn {
+  margin-top: auto;
+  background: red;
+}
+.main {
+  flex: 1;
+  padding: 20px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 15px;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.data-table th, .data-table td {
+  border-bottom: 1px solid #555;
+  padding: 8px;
+}
+
