@@ -3,48 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard POS</title>
+  <title>Dashboard - POS Bangpit</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="layout">
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar">
-    <h2>🍗 Bangpit POS</h2>
-    <a href="dashboard.html" class="active">🏠 Dashboard</a>
-    <a href="pos.html">💰 POS</a>
-    <a href="inventory.html">📦 Inventory</a>
-    <a href="expenses.html">💸 Expenses</a>
-    <a href="report.html">📈 Reports</a>
-    <button class="logout-btn" onclick="logout()">Logout</button>
+<body>
+  <div class="nav">
+    <h2>Dashboard Bangpit</h2>
+    <button onclick="logout()">Logout</button>
   </div>
-
-  <!-- Overlay (for mobile) -->
-  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
-
-  <!-- Main Content -->
-  <div class="main">
-    <div class="topbar">
-      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-      <h1>Dashboard</h1>
+  <div class="content">
+    <div class="card">
+      <h3>Total Sales</h3>
+      <p id="totalSales">RM 0.00</p>
     </div>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Total Sales</h3>
-        <p id="totalSales">RM 0.00</p>
-      </div>
-      <div class="card">
-        <h3>Total Expenses</h3>
-        <p id="totalExpense">RM 0.00</p>
-      </div>
+    <div class="card">
+      <button onclick="window.location='pos.html'">Go to POS</button>
     </div>
   </div>
-
   <script src="js/auth.js"></script>
   <script src="js/dashboard.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/auth.js"></script>
-<script>checkAccess();</script>
-
 </body>
 </html>
