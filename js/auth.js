@@ -19,3 +19,23 @@ function login(event) {
     alert("Username atau password salah!");
   }
 }
+function checkAccess() {
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  // Hide Staff Management link kalau bukan admin
+  const staffLink = document.querySelector('a[href="staff.html"]');
+  if (staffLink && user.role !== "admin") {
+    staffLink.style.display = "none";
+  }
+
+  // Kalau bukan admin tapi cuba buka page staff.html, redirect balik
+  if (window.location.pathname.includes("staff.html") && user.role !== "admin") {
+    alert("Akses terhad kepada Admin sahaja!");
+    window.location.href = "dashboard.html";
+  }
+}
+checkAccess();
