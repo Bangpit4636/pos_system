@@ -42,13 +42,32 @@ function removeItem(i) {
 
 function checkout() {
   const total = cart.reduce((sum, c) => sum + c.price, 0);
-  if (cart.length === 0) return alert("Cart kosong!");
+  const method = document.getElementById("paymentMethod").value;
 
+  if (cart.length === 0) {
+    alert("Cart kosong!");
+    return;
+  }
+
+  // Simpan jualan dalam localStorage
   const sales = JSON.parse(localStorage.getItem("sales")) || [];
-  sales.push({ id: Date.now(), amount: total, date: new Date().toISOString() });
+  sales.push({
+    id: Date.now(),
+    amount: total,
+    date: new Date().toISOString(),
+    payment: method
+  });
   localStorage.setItem("sales", JSON.stringify(sales));
 
+  // Reset cart
   cart = [];
   renderCart();
-  alert("Checkout berjaya! Jumlah: RM " + total.toFixed(2));
+
+  // Paparan mesej ikut kaedah bayaran
+  let msg = "";
+  if (method === "cash") msg = "Tunai diterima.";
+  if (method === "qrpay") msg = "Sila scan QR untuk bayaran.";
+  if (method === "tng") msg = "Bayar guna TNG eWallet.";
+
+  alert(`Checkout berjaya!\nJumlah: RM ${total.toFixed(2)}\nKaedah: ${msg}`);
 }
