@@ -1,3 +1,4 @@
+// === POS MENU ===
 let menu = JSON.parse(localStorage.getItem("menu")) || [
   { id: 1, name: "Ayam Gepuk", price: 13, img: "assets/ayam_gepuk.jpg" },
   { id: 2, name: "Ayam Penyet", price: 13, img: "assets/ayam_penyet.jpg" },
@@ -22,6 +23,7 @@ menuList.innerHTML = menu.map(i => `
   </div>
 `).join("");
 
+// === CART ===
 function addToCart(id) {
   const item = menu.find(m => m.id === id);
   cart.push(item);
@@ -62,12 +64,14 @@ function renderCart() {
   document.getElementById("total").innerText = total.toFixed(2);
 }
 
+// === CHECKOUT ===
 function checkout() {
   const total = cart.reduce((sum, c) => sum + c.price, 0);
   if (cart.length === 0) return alert("Cart kosong!");
 
   const method = document.getElementById("paymentMethod").value;
   const sales = JSON.parse(localStorage.getItem("sales")) || [];
+
   sales.push({
     id: Date.now(),
     amount: total,
@@ -75,8 +79,10 @@ function checkout() {
     payment: method,
     items: [...cart]
   });
+
   localStorage.setItem("sales", JSON.stringify(sales));
   cart = [];
   renderCart();
-  alert(`Bayaran RM ${total.toFixed(2)} (${method.toUpperCase()}) berjaya!`);
+
+  alert(`✅ Bayaran RM ${total.toFixed(2)} (${method.toUpperCase()}) berjaya!`);
 }
