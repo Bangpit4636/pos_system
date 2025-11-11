@@ -59,6 +59,27 @@
           </thead>
           <tbody id="reportSales"></tbody>
         </table>
+        <section class="report-section">
+  <h2>🔥 Sales by Item</h2>
+
+  <div class="filter-row">
+    <label>Tempoh:</label>
+    <select id="salesFilter" onchange="renderItemSales()">
+      <option value="day">Hari Ini</option>
+      <option value="week">Minggu Ini</option>
+      <option value="month">Bulan Ini</option>
+      <option value="all">Semua</option>
+    </select>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Menu</th><th>Kuantiti</th><th>Jumlah Jualan (RM)</th></tr>
+    </thead>
+    <tbody id="itemSalesList"></tbody>
+  </table>
+</section>
+
 
         <h4>Perbelanjaan Harian</h4>
         <table class="data-table">
