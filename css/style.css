@@ -362,6 +362,26 @@ button {
   border-radius: 8px;
   padding: 5px 10px;
 }
+.export-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+.export-btn {
+  background: linear-gradient(90deg, #5C3AFF, #8f6eff);
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.export-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
 
 
 
