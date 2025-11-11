@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Management - Bangpit POS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="layout">
+  <!-- SIDEBAR -->
+  <div id="sidebar" class="sidebar">
+    <h2>🍗 Bangpit POS</h2>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="pos.html">💰 POS</a>
+    <a href="admin.html">🧾 Admin Panel</a>
+    <a href="staff.html" class="active">👨‍🍳 Staff Management</a>
+    <a href="expenses.html">💸 Expenses</a>
+    <a href="report.html">📈 Reports</a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- OVERLAY -->
+  <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+      <h1>Staff Management</h1>
+    </div>
+
+    <div class="admin-section">
+      <form id="staffForm" onsubmit="saveStaff(event)">
+        <input type="hidden" id="editIndex">
+        <input type="text" id="staffName" placeholder="Nama Penuh" required>
+        <input type="text" id="staffRole" placeholder="Jawatan (Contoh: Cashier)" required>
+        <input type="tel" id="staffPhone" placeholder="No. Telefon" required>
+        <button type="submit">Simpan</button>
+      </form>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Jawatan</th>
+            <th>No. Telefon</th>
+            <th>Tindakan</th>
+          </tr>
+        </thead>
+        <tbody id="staffList"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/staff.js"></script>
+</body>
+</html>
