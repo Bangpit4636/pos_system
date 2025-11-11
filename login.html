@@ -5,80 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login POS Bangpit</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* --- FIX untuk Vercel overlay bug --- */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background: #1b1e2b;
-      font-family: "Poppins", sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .login-box {
-      background: white;
-      color: black;
-      padding: 30px;
-      border-radius: 14px;
-      width: 300px;
-      text-align: center;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-      position: relative;
-      z-index: 10;
-    }
-
-    h2 {
-      margin-bottom: 15px;
-      color: #1b1e2b;
-    }
-
-    input {
-      width: 100%;
-      margin-bottom: 12px;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-      position: relative;
-      z-index: 20;
-      pointer-events: auto !important;
-      background: #fff;
-    }
-
-    input:focus {
-      border-color: #5c3aff;
-      outline: none;
-    }
-
-    button {
-      background: #5c3aff;
-      color: white;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-      position: relative;
-      z-index: 20;
-      pointer-events: auto !important;
-    }
-
-    button:hover {
-      background: #3e2bc7;
-    }
-
-    #error {
-      color: red;
-      margin-top: 10px;
-      font-size: 13px;
-    }
-  </style>
 </head>
 <body>
   <div class="login-box">
@@ -89,6 +15,12 @@
     <p id="error"></p>
   </div>
 
-  <script type="text/javascript" src="js/auth.js"></script>
+  <script type="text/javascript">
+    window.addEventListener("DOMContentLoaded", function() {
+      const s = document.createElement("script");
+      s.src = "./js/auth.js?v=" + Date.now();
+      document.body.appendChild(s);
+    });
+  </script>
 </body>
 </html>
