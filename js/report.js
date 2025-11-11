@@ -31,3 +31,19 @@ if (netProfit < 0) {
 } else {
   profitEl.style.color = "#00FF88";
 }
+// =====================
+// GRABFOOD REPORT
+// =====================
+const grabSales = JSON.parse(localStorage.getItem("grabSales")) || [];
+
+const totalGrabPending = grabSales
+  .filter((g) => g.status === "pending")
+  .reduce((sum, g) => sum + g.amount, 0);
+
+document.getElementById("pendingGrab").innerText = totalGrabPending.toFixed(2);
+
+// Update net profit (tolak pending)
+const totalSales = sales.reduce((sum, s) => sum + s.amount, 0);
+const totalExpense = expenses.reduce((sum, e) => sum + e.amount, 0);
+const netProfit = totalSales - totalExpense; // only real sales counted
+document.getElementById("netProfit").innerText = netProfit.toFixed(2);
