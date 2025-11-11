@@ -227,5 +227,16 @@ button {
     display: block;
   }
 }
+.pos-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  .pos-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
