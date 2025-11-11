@@ -50,15 +50,15 @@
     }
 
     function addExpense(){
-      const desc = document.getElementById("desc").value;
-      const amount = parseFloat(document.getElementById("amount").value);
-      if(!desc || !amount) return alert("Sila isi semua maklumat!");
-      expenses.push({desc, amount});
-      localStorage.setItem("expenses", JSON.stringify(expenses));
-      document.getElementById("desc").value="";
-      document.getElementById("amount").value="";
-      renderExpenses();
-    }
+  const desc = document.getElementById("desc").value;
+  const amount = parseFloat(document.getElementById("amount").value);
+  if(!desc || !amount) return alert("Sila isi semua maklumat!");
+  expenses.push({desc, amount, date: new Date().toISOString()});
+  localStorage.setItem("expenses", JSON.stringify(expenses));
+  document.getElementById("desc").value="";
+  document.getElementById("amount").value="";
+  renderExpenses();
+}
 
     renderExpenses();
   </script>
