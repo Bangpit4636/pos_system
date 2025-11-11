@@ -18,21 +18,36 @@
   </div>
 
   <div class="main">
-    <h1>Sales Report</h1>
-    <table class="data-table">
-      <thead>
-        <tr><th>Tarikh</th><th>Jumlah Jualan (RM)</th></tr>
-      </thead>
-      <tbody id="reportSales"></tbody>
-    </table>
+    <h1>Laporan Jualan & Perbelanjaan</h1>
 
-    <h1>Expenses Report</h1>
-    <table class="data-table">
-      <thead>
-        <tr><th>Perkara</th><th>Jumlah (RM)</th></tr>
-      </thead>
-      <tbody id="reportExpense"></tbody>
-    </table>
+    <section>
+      <h2>📊 Laporan Jualan</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Tarikh</th><th>Jumlah Jualan (RM)</th></tr>
+        </thead>
+        <tbody id="reportSales"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>💸 Laporan Perbelanjaan</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Perkara</th><th>Jumlah (RM)</th></tr>
+        </thead>
+        <tbody id="reportExpense"></tbody>
+      </table>
+    </section>
+
+    <section class="summary">
+      <h2>📈 Ringkasan</h2>
+      <div class="summary-box">
+        <p><strong>Total Jualan:</strong> RM <span id="sumSales">0.00</span></p>
+        <p><strong>Total Belanja:</strong> RM <span id="sumExpense">0.00</span></p>
+        <p class="profit"><strong>Untung Bersih:</strong> RM <span id="netProfit">0.00</span></p>
+      </div>
+    </section>
   </div>
 
   <script src="js/auth.js"></script>
