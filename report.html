@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="layout">
+  <div class="sidebar">
+    <h2>🍗 Bangpit POS</h2>
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="pos.html">💰 POS</a>
+    <a href="inventory.html">📦 Inventory</a>
+    <a href="expenses.html">💸 Expenses</a>
+    <a href="report.html" class="active">📈 Reports</a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="main">
+    <h1>Sales Report</h1>
+    <table class="data-table">
+      <thead>
+        <tr><th>Tarikh</th><th>Jumlah Jualan (RM)</th></tr>
+      </thead>
+      <tbody id="reportSales"></tbody>
+    </table>
+
+    <h1>Expenses Report</h1>
+    <table class="data-table">
+      <thead>
+        <tr><th>Perkara</th><th>Jumlah (RM)</th></tr>
+      </thead>
+      <tbody id="reportExpense"></tbody>
+    </table>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/report.js"></script>
+</body>
+</html>
