@@ -1,20 +1,21 @@
-function login() {
-  const user = document.getElementById("username").value;
-  const pass = document.getElementById("password").value;
+function login(event) {
+  event.preventDefault();
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
-  if (user === "admin" && pass === "1234") {
-    localStorage.setItem("loggedInUser", user);
+  // Contoh data sementara (boleh ubah ikut sistem kau)
+  const users = [
+    { username: "admin", password: "1234", role: "admin" },
+    { username: "cashier1", password: "1234", role: "staff" },
+    { username: "manager1", password: "1234", role: "staff" }
+  ];
+
+  const user = users.find(u => u.username === username && u.password === password);
+
+  if (user) {
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
     window.location.href = "dashboard.html";
   } else {
-    document.getElementById("error").innerText = "Invalid username or password!";
+    alert("Username atau password salah!");
   }
-}
-
-function logout() {
-  localStorage.removeItem("loggedInUser");
-  window.location.href = "login.html";
-}
-
-if (!localStorage.getItem("loggedInUser") && !window.location.href.includes("login.html")) {
-  window.location.href = "login.html";
 }
