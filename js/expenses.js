@@ -1,31 +1,27 @@
+// === EXPENSES ===
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 const list = document.getElementById("expenseList");
 
 function renderExpenses() {
-  list.innerHTML = expenses.map((e, i) => `
-    <tr>
-      <td>${e.desc}</td>
-      <td>RM ${e.amount}</td>
-      <td>${new Date(e.date).toLocaleDateString()}</td>
-      <td><button onclick="removeExpense(${i})">🗑️</button></td>
-    </tr>
-  `).join("");
+  if (expenses.length === 0) {
+    list.querySelector("tbody").innerHTML = "<tr><td colspan='2'>Tiada perbelanjaan</td></tr>";
+  } else {
+    list.querySelector("tbody").innerHTML = expenses
+      .map(e => `<tr><td>${e.desc}</td><td>RM ${Number(e.amount).toFixed(2)}</td></tr>`)
+      .join("");
+  }
 }
 
-function addExpense(e) {
-  e.preventDefault();
-  const desc = document.getElementById("desc").value;
+function addExpense() {
+  const desc = document.getElementById("desc").value.trim();
   const amount = parseFloat(document.getElementById("amount").value);
+  if (!desc || !amount) return alert("Sila isi semua maklumat!");
+
   expenses.push({ desc, amount, date: new Date().toISOString() });
   localStorage.setItem("expenses", JSON.stringify(expenses));
-  e.target.reset();
+  document.getElementById("desc").value = "";
+  document.getElementById("amount").value = "";
   renderExpenses();
 }
 
-function removeExpense(i) {
-  expenses.splice(i, 1);
-  localStorage.setItem("expenses", JSON.stringify(expenses));
-  renderExpenses();
-}
-
-renderExpenses();
+window.addEventListener("DOMContentLoaded", renderExpenses);
