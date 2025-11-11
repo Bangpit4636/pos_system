@@ -53,6 +53,20 @@
   </div>
 
   <button onclick="checkout()">Checkout</button>
+        <button class="grab-btn" onclick="openGrabModal()">📦 Tambah GrabFood Order</button>
+
+<!-- Modal GrabFood -->
+<div id="grabModal" class="modal hidden">
+  <div class="modal-box">
+    <h3>Tambah Jualan GrabFood</h3>
+    <input type="number" id="grabAmount" placeholder="Jumlah (RM)" step="0.01" required>
+    <div class="modal-actions">
+      <button onclick="saveGrabSale()">Simpan</button>
+      <button onclick="closeGrabModal()">Batal</button>
+    </div>
+  </div>
+</div>
+
 </div>
 
 
