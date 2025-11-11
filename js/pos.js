@@ -52,11 +52,12 @@ function checkout() {
   // Simpan jualan dalam localStorage
   const sales = JSON.parse(localStorage.getItem("sales")) || [];
   sales.push({
-    id: Date.now(),
-    amount: total,
-    date: new Date().toISOString(),
-    payment: method
-  });
+  id: Date.now(),
+  amount: total,
+  date: new Date().toISOString(),
+  payment: method,
+  items: [...cart]   // simpan senarai item
+}); 
   localStorage.setItem("sales", JSON.stringify(sales));
 
   // Reset cart
