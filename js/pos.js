@@ -98,3 +98,36 @@ function checkout() {
 
   alert(`Checkout berjaya!\nJumlah: RM ${total.toFixed(2)}\nKaedah: ${paymentType.toUpperCase()}`);
 }
+// ===============================
+// GRABFOOD SALES FUNCTIONS
+// ===============================
+
+function openGrabModal() {
+  document.getElementById("grabModal").classList.remove("hidden");
+}
+
+function closeGrabModal() {
+  document.getElementById("grabModal").classList.add("hidden");
+}
+
+function saveGrabSale() {
+  const grabAmount = parseFloat(document.getElementById("grabAmount").value);
+  if (!grabAmount || grabAmount <= 0) {
+    alert("Sila masukkan jumlah jualan GrabFood!");
+    return;
+  }
+
+  const grabSales = JSON.parse(localStorage.getItem("grabSales")) || [];
+  grabSales.push({
+    id: Date.now(),
+    amount: grabAmount,
+    status: "pending", // belum diterima
+    date: new Date().toISOString()
+  });
+  localStorage.setItem("grabSales", JSON.stringify(grabSales));
+
+  document.getElementById("grabAmount").value = "";
+  closeGrabModal();
+  alert("GrabFood order direkod! (belum diterima)");
+}
+
