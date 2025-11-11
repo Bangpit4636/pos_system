@@ -116,4 +116,19 @@ button {
   border-bottom: 1px solid #555;
   padding: 8px;
 }
+.summary {
+  margin-top: 40px;
+}
+.summary-box {
+  background: #2a2d3c;
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 1.8em;
+  font-size: 1.1em;
+}
+.summary-box .profit {
+  font-size: 1.3em;
+  margin-top: 10px;
+}
+
 
