@@ -1,66 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expenses - POS Bangpit</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expenses - Bangpit POS</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="nav">
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <h2>Expenses</h2>
-    <button onclick="logout()">Logout</button>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <a href="dashboard.html">🏠 Dashboard</a>
-    <a href="pos.html">💰 POS</a>
-    <a href="report.html">📊 Report</a>
-    <a href="expenses.html" class="active">📦 Expenses</a>
+  <aside class="sidebar">
+    <h2 class="logo">🍗 Bangpit</h2>
+    <nav>
+      <a href="dashboard.html">🏠 Dashboard</a>
+      <a href="pos.html">💰 POS</a>
+      <a href="report.html">📊 Report</a>
+      <a href="expenses.html" class="active">📦 Expenses</a>
+    </nav>
+    <button class="logout" onclick="logout()">Logout</button>
   </aside>
 
-  <div class="content">
-    <div class="card">
-      <h3>Tambah Perbelanjaan</h3>
+  <main class="main-content">
+    <header class="page-header">
+      <h1>Expenses Management</h1>
+    </header>
+
+    <section class="form-section">
       <input type="text" id="desc" placeholder="Contoh: Minyak masak" />
       <input type="number" id="amount" placeholder="Jumlah (RM)" />
-      <button onclick="addExpense()">Simpan</button>
-    </div>
+      <button onclick="addExpense()">Tambah</button>
+    </section>
 
-    <div class="card">
+    <section class="table-section">
       <h3>Senarai Perbelanjaan</h3>
-      <ul id="expenseList"></ul>
-    </div>
-  </div>
+      <table class="report-table" id="expenseList">
+        <thead><tr><th>Perbelanjaan</th><th>Jumlah (RM)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
 
   <script src="js/auth.js"></script>
-  <script>
-    function toggleMenu(){ document.getElementById('sidebar').classList.toggle('open'); }
-
-    const list = document.getElementById("expenseList");
-    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
-    function renderExpenses(){
-      if(expenses.length === 0){
-        list.innerHTML = "<li>Tiada perbelanjaan</li>";
-      } else {
-        list.innerHTML = expenses.map(e=>`<li>${e.desc} — RM ${e.amount}</li>`).join("");
-      }
-    }
-
-    function addExpense(){
-  const desc = document.getElementById("desc").value;
-  const amount = parseFloat(document.getElementById("amount").value);
-  if(!desc || !amount) return alert("Sila isi semua maklumat!");
-  expenses.push({desc, amount, date: new Date().toISOString()});
-  localStorage.setItem("expenses", JSON.stringify(expenses));
-  document.getElementById("desc").value="";
-  document.getElementById("amount").value="";
-  renderExpenses();
-}
-
-    renderExpenses();
-  </script>
+  <script src="js/expenses.js"></script>
 </body>
 </html>
