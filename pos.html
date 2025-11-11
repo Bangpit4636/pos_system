@@ -34,13 +34,27 @@
 
       <!-- Cart section -->
       <div class="cart">
-        <h3>🛒 Cart</h3>
-        <div id="cartItems"></div>
-        <p>Total: RM <span id="total">0.00</span></p>
-        <button onclick="checkout()">Checkout</button>
-      </div>
-    </div>
+  <h3>🛒 Cart</h3>
+  <div id="cartItems"></div>
+  <p>Total: RM <span id="total">0.00</span></p>
+
+  <h4>Pilih Kaedah Bayaran:</h4>
+  <select id="paymentType" onchange="toggleProofUpload()">
+    <option value="cash">💵 Cash</option>
+    <option value="qr">📱 QR Pay</option>
+    <option value="tng">💳 Touch 'n Go</option>
+    <option value="online">🌐 Online Transfer</option>
+  </select>
+
+  <div id="proofSection" class="proof-upload hidden">
+    <p>Muat naik bukti bayaran:</p>
+    <input type="file" id="paymentProof" accept="image/*" onchange="previewProof(event)">
+    <img id="proofPreview" class="proof-preview" />
   </div>
+
+  <button onclick="checkout()">Checkout</button>
+</div>
+
 
   <script src="js/auth.js"></script>
   <script src="js/ui.js"></script>
